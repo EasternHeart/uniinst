@@ -1,0 +1,16 @@
+dialog-msgbox "现在将进行解包的准备工作。"
+if $CDMNT/uniinst/prepare-tar
+then
+	dialog-msgbox "可以解包了。"
+else
+	dialog-msgbox "准备失败……TAT"
+	halt
+fi
+if tar xvf $TARBALL | progress-bar
+then
+	dialog-msgbox "解包完成。"
+else
+	dialog-msgbox "解包失败……TAT"
+	halt
+fi
+

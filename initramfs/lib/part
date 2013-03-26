@@ -1,0 +1,41 @@
+if dialog-yesno "是否使用uniinst-premark进行过磁盘的预标记？"
+then
+	mkdir -p /mnt/hd
+	for i in /dev/sd*
+	do
+		mount $i /mnt/hd
+		if [ -e /mnt/hd/uniinst-marked ]
+		then
+			dialog-msgbox "好像找到了一个标记哎～是$i哦^o^"
+			export HDDEV=$i
+			umount /mnt/hd
+			break
+		fi
+		umount /mnt/hd
+	done
+fi
+if [ "x$HDDEV" = "x" ]
+then
+	dialog-msgbox "现在将进行分区。一个分区软件（由你的安装环境决定）将启动。"
+	partitioner
+	dialog-input "输入安装分区号（如/dev/sda1）"
+	i="`dialog-input-getinfo`"
+	if [ -e $i ]
+	then
+		export HDDEV=$i
+		if dialog-yesno "是否格式化？"
+		then
+			dialog-input "输入分区格式（可用格式有$PART_FORMAT）"
+			i="`dialog-input-getinfo`"
+			if [ -e /sbin/mkfs.$i ]
+			then
+				dialog-msgbox "现在将格式化$HDDEV！如果要反悔，赶紧按下电源！否则后果自负！！！"
+				terminal "mkfs.$i $HDDEV"
+				export HDFORMAT=$i
+			fi
+		fi
+		mkdir -p /mnt/hd
+		mount $HDDEV /mnt/hd
+		export HDMNT=/mnt/hd
+	fi
+fi

@@ -1,0 +1,31 @@
+echo "Probing CD-ROM device..."
+mkdir -p /mnt/cd
+for i in /dev/sr* /dev/sd*
+do
+	# Check CDROM first, and then check harddisk.
+	mount $i /mnt/cd
+	if [ -d /mnt/cd/uniinst ]
+	then
+		echo "CD-ROM found on $i."
+		export CDDEV=$i
+		export CDMNT=/mnt/cd
+		break
+	fi
+	umount /mnt/cd
+done
+while [ "x$CDDEV" = "x" ]
+do
+	echo "No CD-ROM found..."
+	echo "Input one device (like /dev/loop0): "
+	read i
+	mount $i /mnt/cd
+	if [ -d /mnt/cd/uniinst ]
+	then
+		echo "CD-ROM found on $i."
+		export CDDEV=$i
+		export CDMNT=/mnt/cd
+		break
+	fi
+	umount /mnt/cd
+done
+

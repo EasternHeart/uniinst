@@ -1,0 +1,10 @@
+#! /bin/bash
+echo "UNIINST 0.0.0"
+echo "Probing CD-ROM device..."
+. /lib/probe-cd
+echo "Loading components from CD-ROM..."
+. /lib/load-components
+. /lib/welcome
+. /lib/part
+. /lib/unpack
+. /lib/beyond-tar

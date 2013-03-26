@@ -1,0 +1,8 @@
+if bash -e $CDMNT/uniinst/loadcomp-basic
+then
+	echo "Loading components done."
+else
+	echo "Loading components failed... A failsafe bash will run."
+	exec /bin/bash --login
+fi
+
