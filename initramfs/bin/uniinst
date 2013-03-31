@@ -8,3 +8,4 @@ echo "Loading components from CD-ROM..."
 . /lib/part
 . /lib/unpack
 . /lib/beyond-tar
+. /lib/cong

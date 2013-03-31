@@ -1,0 +1,2 @@
+#! /bin/bash
+dialog --textbox "$1" 30 50

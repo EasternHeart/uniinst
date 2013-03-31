@@ -1,8 +1,9 @@
 echo "Probing CD-ROM device..."
 mkdir -p /mnt/cd
-for i in /dev/sr* /dev/sd*
+for i in /dev/sr* /dev/sd* /dev/loop*
 do
 	# Check CDROM first, and then check harddisk.
+	echo "Probind $i"
 	mount $i /mnt/cd
 	if [ -d /mnt/cd/uniinst ]
 	then
