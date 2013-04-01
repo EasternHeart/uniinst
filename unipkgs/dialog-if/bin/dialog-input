@@ -1,0 +1,2 @@
+#! /bin/bash
+dialog --inputbox "$1" 30 50 2>/tmp/dialog-input

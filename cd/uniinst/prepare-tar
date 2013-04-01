@@ -1,0 +1,3 @@
+echo "Preparing tar..."
+export TARBALL=$CDMNT/uniinst/tarball.tar.xz
+

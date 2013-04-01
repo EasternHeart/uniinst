@@ -1,10 +1,10 @@
 if dialog-yesno "是否使用uniinst-premark进行过磁盘的预标记？"
 then
 	mkdir -p /mnt/hd
-	for i in /dev/sd*
+	for i in /dev/sd* /dev/loop*
 	do
 		mount $i /mnt/hd
-		if [ -e /mnt/hd/uniinst-marked ]
+		if [ -e /mnt/hd/uniinst-premark ]
 		then
 			dialog-msgbox "好像找到了一个标记哎～是$i哦^o^"
 			export HDDEV=$i

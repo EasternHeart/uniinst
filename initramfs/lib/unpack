@@ -1,5 +1,5 @@
 dialog-msgbox "现在将进行解包的准备工作。"
-if $CDMNT/uniinst/prepare-tar
+if bash $CDMNT/uniinst/prepare-tar
 then
 	dialog-msgbox "可以解包了。"
 else

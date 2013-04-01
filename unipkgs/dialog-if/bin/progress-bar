@@ -1,0 +1,2 @@
+#! /bin/bash
+exec dialog --progressbox "" 30 50 

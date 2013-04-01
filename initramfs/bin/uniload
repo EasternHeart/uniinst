@@ -1,0 +1,18 @@
+#! /bin/bash
+mkdir -p /var/lib/uniload
+if [ -e /var/lib/uniload/$1 ]
+then
+	exit 0
+fi
+if [ -e $CDMNT/uniinst/unipkgs/$1.tar.xz ]
+then
+	tar -xvf $CDMNT/uniinst/unipkgs/$1.tar.xz -C /
+	if [ -e /ULconfig ]
+	then
+		bash /ULconfig
+		rm /ULconfig
+	fi
+	touch /var/lib/uniload/$1
+else
+	exit 1
+fi
