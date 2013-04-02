@@ -1,0 +1,7 @@
+pushd $HDMNT
+umount dev/pts
+umount dev
+umount proc
+umount sys
+popd
+

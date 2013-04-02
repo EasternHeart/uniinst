@@ -1,0 +1,5 @@
+chroot $HDMNT passwd root
+dialog-input "新建用户：" "default"
+chroot $HDMNT useradd -m "`dialog-input-geiinfo`"
+chroot $HDMNT passwd "`dialog-input-geiinfo`"
+

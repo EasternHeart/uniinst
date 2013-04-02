@@ -1,0 +1,6 @@
+if dialog-yesno "是否安装GRUB?"
+then
+	dialog-input "输入安装位置：" $HDDEV
+	chroot $HDMNT /usr/sbin/grub-install $HDDEV
+	chroot $HDMNT /usr/sbin/grub-mkconfig -o /boot/grub/grub.cfg
+fi
