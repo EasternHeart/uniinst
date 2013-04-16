@@ -25,7 +25,7 @@ then
 		export HDDEV=$i
 		if dialog-yesno "是否格式化？"
 		then
-			dialog-input "输入分区格式（可用格式有$PART_FORMAT）"
+			dialog-input "输入分区格式（可用格式有`cat /etc/partformat`）"
 			i="`dialog-input-getinfo`"
 			if [ -e /sbin/mkfs.$i ]
 			then
