@@ -1,0 +1,1 @@
+echo "$HDDEV / ext4 defaults 1 1" >> $HDMNT/etc/fstab
