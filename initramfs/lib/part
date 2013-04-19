@@ -9,6 +9,7 @@ then
 			dialog-msgbox "好像找到了一个标记哎～是$i哦^o^"
 			export HDDEV=$i
 			umount /mnt/hd
+			mkfs.ext4 $i
 			break
 		fi
 		umount /mnt/hd
